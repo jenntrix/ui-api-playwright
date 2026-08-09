@@ -7,6 +7,10 @@ on:
   pull_request:
     branches: [main]
 
+  schedule:
+    - cron: '0 12 */2 * *'
+      timezone: 'America/Santo_Domingo'
+
 jobs:
   test:
     runs-on: ubuntu-latest

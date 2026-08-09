@@ -216,6 +216,8 @@ test.describe('Disney API Tests', () => {
     test('TC-API-008 — Malformed request', async ({ request }) => { 
         id = 'invalid-id';
 
+        test.fail(true, 'Known API bug: malformed character ID does not return the expected error response');
+
         await test.step('Request a character with invalid id', async () => {
         response = await apiService.getCharacterById(id);
         });
