@@ -180,3 +180,7 @@ The test scope, UI test case selection rationale, test independence, assumptions
 ```text
 TEST-PLAN.md
 ```
+
+## Author
+
+Jennifer Herrera
