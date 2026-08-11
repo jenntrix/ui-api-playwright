@@ -1,7 +1,7 @@
 {
-  "name": "orangehrm",
+  "name": "ui-api-playwright",
   "version": "1.0.0",
-  "description": "",
+  "description": "Playwright UI and API automation framework for OrangeHRM and Disney API",
   "main": "index.js",
   "scripts": {
   "test": "playwright test",
@@ -14,7 +14,7 @@
   "docker:test": "docker run --rm --env-file .env ui-api-playwright"
   },
   "keywords": [],
-  "author": "",
+  "author": "Jennifer Herrera",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {

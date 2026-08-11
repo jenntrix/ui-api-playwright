@@ -185,7 +185,6 @@ This separation keeps the test code easier to read, reuse, and maintain.
 | ------------------ | ------: |
 | Node.js            | 22 |
 | Playwright Test    | 1.61.1 |
-| JavaScript         | ES Modules |
 | Faker              | 10.5.0 |
 | dotenv             | 17.4.2 |
 | Allure Playwright  | 3.10.2 |
