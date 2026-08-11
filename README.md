@@ -9,9 +9,15 @@ The project covers the required UI and API scenarios and runs the complete test 
 
 ## Prerequisites
 
+For local execution:
+
 - Node.js 22
 - npm
 - Chromium
+
+For Docker execution:
+
+- Docker
 
 ## Setup
 
@@ -68,6 +74,40 @@ Run tests in debug mode:
 npm run test:debug
 ```
 
+## Docker
+
+Docker can be used as an alternative way to run the complete UI and API test suite in a consistent and reproducible environment.
+
+The Docker image uses the official Playwright image with the required browser and system dependencies.
+
+### Build the Docker Image
+
+```bash
+docker build -t ui-api-playwright .
+```
+
+Or, using the npm script:
+
+```bash
+npm run docker:build
+```
+
+### Run Tests with Docker
+
+```bash
+docker run --rm --env-file .env ui-api-playwright
+```
+
+Or:
+
+```bash
+npm run docker:test
+```
+
+The `.env` file is passed to the container at runtime and is not copied into the Docker image.
+
+Docker helps ensure that the tests run in the same environment regardless of the local Node.js, Playwright, browser, or system configuration.
+
 ## Reports
 
 The project uses the Playwright HTML Reporter and Allure.
@@ -109,9 +149,13 @@ In CI, the Playwright HTML report is uploaded as a GitHub Actions artifact after
 │       │   └── apitest.spec.js
 │       └── ui-orangehrm/
 │           └── tests.spec.js
+├── Dockerfile
+├── .dockerignore
+├── .gitignore
 ├── playwright.config.js
 ├── TEST-PLAN.md
 ├── package.json
+├── package-lock.json
 └── README.md
 ```
 
@@ -137,17 +181,18 @@ This separation keeps the test code easier to read, reuse, and maintain.
 
 ## Tools and Dependencies
 
-| Tool / Dependency | Version |
-|---|---:|
-| Node.js | 22 |
-| Playwright Test | 1.61.1 |
-| JavaScript | ES Modules |
-| Faker | 10.5.0 |
-| dotenv | 17.4.2 |
-| Allure Playwright | 3.10.2 |
+| Tool / Dependency  | Version |
+| ------------------ | ------: |
+| Node.js            | 22 |
+| Playwright Test    | 1.61.1 |
+| JavaScript         | ES Modules |
+| Faker              | 10.5.0 |
+| dotenv             | 17.4.2 |
+| Allure Playwright  | 3.10.2 |
 | Allure Commandline | 2.43.0 |
-| ESLint | 10.8.1 |
-| GitHub Actions | CI pipeline |
+| ESLint             | 10.8.1 |
+| GitHub Actions     | CI pipeline |
+| Docker             | Containerized test execution |
 
 ## CI Pipeline
 
@@ -161,6 +206,7 @@ The pipeline runs on:
 
 - Pushes to `main`
 - Pull requests targeting `main`
+- Scheduled regression runs every two days at 12:00 PM
 
 The workflow:
 

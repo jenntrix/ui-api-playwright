@@ -9,7 +9,9 @@
   "test:api": "playwright test tests/specs/api-disney",
   "test:debug": "playwright test --debug",
   "report:playwright": "playwright show-report",
-  "report:allure": "allure generate allure-results --clean -o allure-report && allure open allure-report"
+  "report:allure": "allure generate allure-results --clean -o allure-report && allure open allure-report",
+  "docker:build": "docker build -t ui-api-playwright .",
+  "docker:test": "docker run --rm --env-file .env ui-api-playwright"
   },
   "keywords": [],
   "author": "",
